@@ -13,7 +13,7 @@ public class SecurityUserEntity implements RowMapper{
 	
 	private String password;
 	
-	private String key;
+	private byte[] key;
 
 	
 	
@@ -41,15 +41,18 @@ public class SecurityUserEntity implements RowMapper{
 
 
 
-	public String getKey() {
+
+
+	public byte[] getKey() {
 		return key;
 	}
 
 
 
-	public void setKey(String key) {
+	public void setKey(byte[] key) {
 		this.key = key;
 	}
+
 
 
 	public Integer getId() {
@@ -69,7 +72,7 @@ public class SecurityUserEntity implements RowMapper{
 		SecurityUserEntity entity = new SecurityUserEntity();
 		entity.setUsername(rs.getString("username"));
 		entity.setPassword(rs.getString("password"));
-		entity.setKey(rs.getString("key"));
+		entity.setKey(rs.getBytes("password_key"));
 		entity.setId(rs.getInt("id"));
 		return entity;
 	}
